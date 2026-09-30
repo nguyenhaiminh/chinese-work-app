@@ -1,6 +1,6 @@
-# Hanzi Work
+# Hanzi HSK
 
-Ứng dụng web học tiếng Trung HSK 1–3 dành cho người đi làm. Nội dung tập trung vào từ vựng, cấu trúc, giao tiếp công sở và bài tập ngắn có giải thích.
+Ứng dụng web học tiếng Trung HSK 1–3. Nội dung tập trung vào từ vựng, ngữ pháp, phát âm, hội thoại đời sống và bài tập ngắn có giải thích.
 
 ## Chạy local
 
