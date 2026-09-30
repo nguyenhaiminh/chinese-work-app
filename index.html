@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5-daily-practice">
+  <link rel="stylesheet" href="styles.css?v=6-full-roadmap">
 </head>
 <body>
   <div class="app-shell">
@@ -46,8 +46,14 @@
       </section>
 
       <section id="roadmapView" class="view">
-        <header class="page-header"><div><p class="eyebrow">LỘ TRÌNH HSK 1 → 3</p><h1>Tiếng Trung từ nền tảng đến ứng dụng</h1><p>9 bài cốt lõi về chào hỏi, gia đình, thời gian, sinh hoạt, ăn uống, mua sắm, đi lại và sức khỏe.</p></div><div class="level-filter"><button class="active" data-level="all">Tất cả</button><button data-level="HSK 1">HSK 1</button><button data-level="HSK 2">HSK 2</button><button data-level="HSK 3">HSK 3</button></div></header>
-        <div class="roadmap-summary"><div><strong id="roadmapPercent">0%</strong><small>HOÀN THÀNH</small></div><div><span><i id="roadmapBar"></i></span><p><b id="roadmapDone">0</b> / 9 bài</p></div></div>
+        <header class="page-header"><div><p class="eyebrow">LỘ TRÌNH HSK 1 → 6</p><h1>Tiếng Trung từ mất gốc đến nâng cao</h1><p>Bản đồ học chi tiết theo từng cấp: mục tiêu, từ vựng, ngữ pháp, kỹ năng, bài thực hành và chuẩn đầu ra.</p></div><div class="level-filter"><button class="active" data-level="all">Tất cả</button><button data-level="HSK 1">HSK 1</button><button data-level="HSK 2">HSK 2</button><button data-level="HSK 3">HSK 3</button></div></header>
+        <div class="roadmap-summary"><div><strong id="roadmapPercent">0%</strong><small>HOÀN THÀNH</small></div><div><span><i id="roadmapBar"></i></span><p><b id="roadmapDone">0</b> / 9 bài tương tác</p></div></div>
+        <section class="hsk-roadmap-guide">
+          <div class="roadmap-guide-head"><div><p class="eyebrow">BẢN ĐỒ HỌC TẬP ĐẦY ĐỦ</p><h2>Từ mất gốc đến HSK 6</h2><p>Mở từng cấp để xem nội dung phải học, bài thực hành và điều kiện chuyển cấp.</p></div><div class="roadmap-total"><b>48–72</b><span>tuần gợi ý</span></div></div>
+          <div id="hskLevelGuide" class="hsk-level-guide"></div>
+          <div class="weekly-plan"><div><p class="eyebrow">LỊCH MẪU MỖI TUẦN</p><h3>Học 6 ngày, ôn 1 ngày</h3></div><ol><li><b>Thứ 2</b><span>Từ mới + phát âm</span></li><li><b>Thứ 3</b><span>Ngữ pháp + đặt câu</span></li><li><b>Thứ 4</b><span>Nghe chép chính tả</span></li><li><b>Thứ 5</b><span>Đọc hiểu + từ khóa</span></li><li><b>Thứ 6</b><span>Nói theo chủ đề</span></li><li><b>Thứ 7</b><span>Bài tập tổng hợp</span></li><li><b>Chủ nhật</b><span>Ôn lỗi sai + kiểm tra</span></li></ol></div>
+        </section>
+        <div class="section-heading roadmap-lessons-title"><div><p class="eyebrow">BÀI HỌC TƯƠNG TÁC</p><h2>Học chi tiết theo chủ đề</h2></div></div>
         <div class="lesson-grid" id="lessonGrid"></div>
       </section>
 
@@ -85,6 +91,6 @@
   </aside>
   <div id="toast" class="toast" role="status"></div>
   <script src="content.js?v=3-general-hsk"></script>
-  <script src="app.js?v=5-daily-practice"></script>
+  <script src="app.js?v=6-full-roadmap"></script>
 </body>
 </html>
