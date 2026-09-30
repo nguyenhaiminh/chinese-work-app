@@ -71,3 +71,23 @@ function toast(message){const el=$('#toast');el.textContent=message;el.classList
 $$('[data-level]').forEach(b=>b.onclick=()=>{$$('[data-level]').forEach(x=>x.classList.toggle('active',x===b));renderRoadmap(b.dataset.level)});
 document.addEventListener('click',e=>{if(innerWidth<=850&&!$('#sidebar').contains(e.target)&&!$('#menuButton').contains(e.target))$('#sidebar').classList.remove('open')});
 renderRoadmap();renderWords();renderConversation();renderLesson();updateUI();bindLessons();
+
+const chatPanel=$('#chatPanel'),chatMessages=$('#chatMessages'),chatInput=$('#chatInput');
+function openChat(){chatPanel.classList.add('open');chatPanel.setAttribute('aria-hidden','false');setTimeout(()=>chatInput.focus(),220)}
+function closeChat(){chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true');$('#chatToggle').focus()}
+$('#chatToggle').onclick=openChat;$('#chatClose').onclick=closeChat;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&chatPanel.classList.contains('open'))closeChat()});
+function chatAnswer(text){const q=text.toLowerCase();
+ if(q.includes('giới thiệu')||q.includes('tên')||q.includes('自我介绍'))return '<b>Giới thiệu ngắn:</b><br>你好，我叫小明。<br><i>Nǐ hǎo, wǒ jiào Xiǎomíng.</i><br>Xin chào, tôi tên Tiểu Minh.<br><br>我在技术部工作。<br><i>Wǒ zài jìshù bù gōngzuò.</i><br>Tôi làm ở bộ phận kỹ thuật.';
+ if(q.includes('已经')||q.includes('正在')||q.includes('đã')||q.includes('đang'))return '<b>已经 yǐjīng</b> = đã: 我已经完成了。 (Tôi đã hoàn thành.)<br><br><b>正在 zhèngzài</b> = đang: 我正在准备会议。 (Tôi đang chuẩn bị cuộc họp.)<br><br>Mẹo: 已经 thường đi với 了; 正在 đứng ngay trước động từ.';
+ if(q.includes('giúp')||q.includes('nhờ')||q.includes('帮'))return 'Cách nhờ lịch sự:<br><b>可以帮我一下吗？</b><br><i>Kěyǐ bāng wǒ yíxià ma?</i><br>Bạn có thể giúp tôi một chút không?<br><br>Thêm <b>请</b>, <b>一下</b> hoặc mẫu <b>可以…吗？</b> để câu mềm hơn.';
+ if(q.includes('họp')||q.includes('会议')||q.includes('ý kiến'))return 'Nêu ý kiến trong họp:<br><b>我觉得这个办法很好。</b><br><i>Wǒ juéde zhège bànfǎ hěn hǎo.</i><br>Tôi thấy cách này rất tốt.<br><br>Chưa hiểu: <b>能再说一遍吗？</b> — Có thể nói lại một lần không?';
+ if(q.includes('email')||q.includes('文件')||q.includes('tài liệu')||q.includes('gửi'))return 'Gửi tài liệu:<br><b>请把文件发给我。</b><br><i>Qǐng bǎ wénjiàn fā gěi wǒ.</i><br>Vui lòng gửi tài liệu cho tôi.<br><br>Xác nhận: <b>我收到你的邮件了。</b> — Tôi đã nhận email của bạn.';
+ if(q.includes('khách')||q.includes('客户')||q.includes('xin lỗi'))return 'Với khách hàng, dùng <b>您 nín</b> thay cho 你.<br><br><b>非常抱歉，我们会尽快回复您。</b><br><i>Fēicháng bàoqiàn, wǒmen huì jǐnkuài huífù nín.</i><br>Thành thật xin lỗi, chúng tôi sẽ phản hồi quý khách sớm nhất.';
+ if(q.includes('nếu')||q.includes('如果'))return '<b>如果…就…</b> = nếu… thì…<br>如果没问题，我们就按时完成。<br><i>Rúguǒ méi wèntí, wǒmen jiù ànshí wánchéng.</i><br>Nếu không có vấn đề, chúng ta sẽ hoàn thành đúng hạn.';
+ if(q.includes('pinyin')||q.includes('phát âm')||q.includes('thanh điệu'))return 'Pinyin có 4 thanh chính: mā (ngang), má (lên), mǎ (xuống–lên), mà (xuống). Hãy nghe nút ♪, đọc chậm từng âm rồi mới ghép cả câu. Thanh 3 đứng trước thanh 3 thường đọc gần giống thanh 2, ví dụ 你好: ní hǎo.';
+ const found=allWords.find(w=>q.includes(w.hanzi)||q.includes(w.pinyin.toLowerCase())||q.includes(w.meaning.toLowerCase()));if(found)return `<b>${found.hanzi}</b> · ${found.pinyin}<br>${found.meaning}<br><br>Ví dụ: ${found.example}`;
+ return 'Mình chưa nhận ra chủ điểm. Bạn có thể hỏi cụ thể như: <b>cách giới thiệu bản thân</b>, <b>已经 và 正在</b>, <b>mẫu câu trong cuộc họp</b>, <b>gửi email</b>, <b>giao tiếp khách hàng</b> hoặc nhập một từ Hán trong bài.';
+}
+function sendChat(text){const value=text.trim();if(!value)return;const safe=value.replace(/[<>]/g,'');chatMessages.insertAdjacentHTML('beforeend',`<div class="chat-message user"><p>${safe}</p></div>`);chatInput.value='';chatMessages.scrollTop=chatMessages.scrollHeight;setTimeout(()=>{chatMessages.insertAdjacentHTML('beforeend',`<div class="chat-message bot"><span>汉</span><p>${chatAnswer(value)}</p></div>`);chatMessages.scrollTop=chatMessages.scrollHeight},300)}
+$('#chatForm').onsubmit=e=>{e.preventDefault();sendChat(chatInput.value)};$$('.chat-suggestions button').forEach(b=>b.onclick=()=>sendChat(b.textContent));

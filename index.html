@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=2-blue-chat">
 </head>
 <body>
   <div class="app-shell">
@@ -75,7 +75,15 @@
       </section>
     </main>
   </div>
+  <button type="button" id="chatToggle" class="chat-toggle" aria-label="Mở trợ lý HSK"><span>问</span><b>Hỏi Hanzi</b></button>
+  <aside id="chatPanel" class="chat-panel" aria-label="Trợ lý học tiếng Trung" aria-hidden="true">
+    <header class="chat-header"><div><span>汉</span><div><strong>Hanzi AI</strong><small><i></i> Trợ lý HSK công sở</small></div></div><button type="button" id="chatClose" aria-label="Đóng chatbot">×</button></header>
+    <div id="chatMessages" class="chat-messages"><div class="chat-message bot"><span>汉</span><p>你好! Bạn muốn hỏi về từ vựng, ngữ pháp, pinyin hay mẫu câu giao tiếp công sở nào?</p></div></div>
+    <div class="chat-suggestions"><button type="button">Cách giới thiệu bản thân</button><button type="button">Phân biệt 已经 và 正在</button><button type="button">Xin đồng nghiệp giúp thế nào?</button></div>
+    <form id="chatForm" class="chat-form"><input id="chatInput" autocomplete="off" placeholder="Nhập câu hỏi của bạn..." aria-label="Câu hỏi"><button type="submit" aria-label="Gửi">↑</button></form>
+    <p class="chat-note">Giải thích ngắn gọn · Có ví dụ Trung–Việt</p>
+  </aside>
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=1"></script>
+  <script src="app.js?v=2-blue-chat"></script>
 </body>
 </html>
